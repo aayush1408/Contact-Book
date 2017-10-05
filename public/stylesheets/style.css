@@ -1,0 +1,20 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.striped{
+    background-color:   #B0C4DE;
+}
+.even{
+    background-color: #f7f7f7; 
+}
+h1{
+    text-align: center;
+}
+#dashboard{
+    text-decoration: underline;
+    font-family: monospace;
+}

@@ -1,0 +1,40 @@
+<div class="container">
+    
+        <h3 id="dashboard">Dashboard</h3>
+<br>
+
+
+<table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile-No</th>
+      <th>Address</th>
+      <th>Delete</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="detail in details" ng-class-odd="'striped'" ng-class-even="'even'">
+    <tr>
+      <th scope="row">{{detail.name}}</th>
+      <td>{{detail.email}}</td>
+      <td>{{detail.number}}</td>
+      <td>{{detail.address}}</td>
+      <td><button ng-click="delete(detail._id)" class="btn btn-xs btn-danger ">Delete</button></td>
+      <td><a ng-href="#!update/{{detail._id}}" target="_self"><button class="btn btn-xs btn-warning ">Update</button></a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!--
+<div class="container">
+<ul ng-repeat="detail in details">
+    <li>{{detail.name}}</li>
+    <li>{{detail.email}}</li>
+    <li>{{detail.number}}</li>
+    <li>{{detail.address}}</li>
+    
+</ul>
+</div>
+-->
