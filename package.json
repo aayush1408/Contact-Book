@@ -2,8 +2,12 @@
   "name": "contactbook",
   "version": "0.0.0",
   "private": true,
+  "engines":{
+    "node":"6.9.1",
+    "npm":"3.10.8"
+  },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
