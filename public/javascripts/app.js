@@ -83,7 +83,7 @@ myApp.controller('myController', ['$scope', '$http', '$routeParams', '$location'
             url: `/api/updatedata/${id}`,
             data: $scope.newData
         }).then((success) => {
-            console.log('Data updated');
+            alert('Data updated');
         }, (err) => {
             console.log('Error occured');
         })
