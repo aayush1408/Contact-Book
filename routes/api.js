@@ -4,45 +4,45 @@ var mongoose = require('mongoose');
 var Contact = require('./models/model.js');
 /* GET home page. */
 
-router.post('/',function(req,res,next){
+router.post('/', function (req, res, next) {
     var name = req.body.name;
     var email = req.body.email;
     var number = req.body.number;
     var address = req.body.address;
 
     var newContact = new Contact({
-        name:name,
-        email:email,
-        number:number,
-        address:address
+        name: name,
+        email: email,
+        number: number,
+        address: address
     });
-    newContact.save(function(err,doc){
+    newContact.save(function (err, doc) {
         if (err) throw err;
-        else{
+        else {
             console.log('Saved');
             res.json(doc);
         }
     });
 });
 
-router.get('/', function(req, res, next) {
-  Contact.find({}).exec(function(err,doc){
-    if (err) throw err;
-    else{
-        console.log(doc);
-        res.json(doc);
-
-    }
-  }); 
-  });
-
-router.get('/delete/:id',function(req,res,next){
-    Contact.findOneAndRemove({_id:req.params.id},function(err){
+router.get('/', function (req, res, next) {
+    Contact.find({}).exec(function (err, doc) {
         if (err) throw err;
-        else{
-            Contact.find({}).exec(function(err,doc){
+        else {
+            console.log(doc);
+            res.json(doc);
+
+        }
+    });
+});
+
+router.get('/delete/:id', function (req, res, next) {
+    Contact.findOneAndRemove({ _id: req.params.id }, function (err) {
+        if (err) throw err;
+        else {
+            Contact.find({}).exec(function (err, doc) {
                 if (err) throw err;
-                else{
+                else {
                     res.json(doc);
                 }
             });
@@ -50,20 +50,21 @@ router.get('/delete/:id',function(req,res,next){
     });
 });
 
-router.get('/updatedata/:id',function(req,res,next){
-    Contact.findOneAndUpdate({_id:req.params.id},
-                             {$set:{ name: req.body.name , email : req.body.email , number : req.body.number ,address : req.body.address }},
-                             {upsert:true},
-                             function(err,doc){
-        if (err) throw err;
-        else{
-            res.json(doc);
-        }
-    });
+router.post('/updatedata/:id', function (req, res, next) {
+    // console.log(res.data);
+    Contact.findOneAndUpdate({ _id: req.params.id },
+        { $set: req.body },
+        { upsert: true },
+        function (err, doc) {
+            if (err) throw err;
+            else {
+                res.json(doc);
+            }
+        });
 });
 
-router.get('*', function(req, res, next) {
-  res.sendFile('../public/index.html');
+router.get('*', function (req, res, next) {
+    res.sendFile('../public/index.html');
 });
 
 module.exports = router;
